@@ -53,7 +53,7 @@ async def handle_dice(msg: Message, session: DataInteraction):
     dice = msg.dice
     topic_id = msg.message_thread_id
 
-    await session.add_static_value('spent', 25)
+    await session.add_static_value('spent', 15)
 
     emoji = dice.emoji
     value = dice.value
