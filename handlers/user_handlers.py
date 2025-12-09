@@ -47,7 +47,7 @@ async def start_dialog(msg: Message, dialog_manager: DialogManager, session: Dat
         await dialog_manager.start(state=adminSG.start, mode=StartMode.RESET_STACK)
 
 
-@user_router.message(F.dice, invert_f(F.forward_from), invert_f(F.forward_from_chat), F.chat.id == config.bot.chat_id, F.message_thread_id in topics_list)
+@user_router.message(F.dice, invert_f(F.forward_from), invert_f(F.forward_from_chat), F.chat.id == config.bot.chat_id, F.message_thread_id.in_(topics_list))
 async def handle_dice(msg: Message, session: DataInteraction):
     user_id = msg.from_user.id
     dice = msg.dice
