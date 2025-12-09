@@ -114,9 +114,9 @@ async def handle_dice(msg: Message, session: DataInteraction):
                                 '<em>бонусом 55⭐️!</em></b>')
                 prize = 55
             else:
-                await msg.reply('<b>😎🛠 Становитесь мастером игры! 🛠😎</b>\n\n⭐️ <b><em><u>Забирайте 65⭐️!</u></em></b>\n'
+                await msg.reply('<b>😎🛠 Становитесь мастером игры! 🛠😎</b>\n\n⭐️ <b><em><u>Забирайте 60⭐️!</u></em></b>\n'
                                 '<b>Чем активнее играете, тем ближе крупный выигрыш!</b>')
-                prize = 65
+                prize = 60
                 await session.del_touches_by_value(user_id, emojies[emoji], value)
 
     elif emoji == "🎯":  # Дартс
@@ -154,9 +154,11 @@ async def handle_dice(msg: Message, session: DataInteraction):
             await msg.reply('<b>👑 Корона победителя ваша! 👑</b>\n\n<b><em><u>⭐️ Забирайте бонус 55⭐️!</u></em></b>\n'
                             '<b>Докажите, кто настоящий король игры! 👑</b>')
             prize = 55
-            await session.del_touches_by_value(user_id, emojies[emoji], value)
+            await session.del_touches_by_value(user_id, emojies[emoji], 4)
+            await session.del_touches_by_value(user_id, emojies[emoji], 5)
         else:
-            await session.del_touches_by_value(user_id, emojies[emoji], value)
+            await session.del_touches_by_value(user_id, emojies[emoji], 4)
+            await session.del_touches_by_value(user_id, emojies[emoji], 5)
 
     elif emoji == "🏀":  # Баскетбол
         if value in [4, 5]:
@@ -168,9 +170,11 @@ async def handle_dice(msg: Message, session: DataInteraction):
             await msg.reply('<b>🦁 Победители идут до конца! 🦁</b>\n\n<b><em>С бонусом 55⭐️</em> ваша игровая карьера '
                             'станет легендой!</b>\n🎉 Бонус уже в пути!\n\n<b>Забрасывайте мячи и выигрывайте ещё ⭐️</b>')
             prize = 55
-            await session.del_touches_by_value(user_id, emojies[emoji], value)
+            await session.del_touches_by_value(user_id, emojies[emoji], 4)
+            await session.del_touches_by_value(user_id, emojies[emoji], 5)
         else:
-            await session.del_touches_by_value(user_id, emojies[emoji], value)
+            await session.del_touches_by_value(user_id, emojies[emoji], 4)
+            await session.del_touches_by_value(user_id, emojies[emoji], 5)
 
     if prize:
         await session.add_static_value('payouts', prize)
